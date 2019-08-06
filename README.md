@@ -1,12 +1,6 @@
 # ig-tools
 
-<<<<<<< HEAD
-
 ### ig auto-commentor/liker
-
-=======
-###ig auto-commentor/liker
->>>>>>> 1.0_py
 
  An Instagram toolkit which consists of:
  
@@ -59,11 +53,8 @@ driver = driver.Chrome(executable_path=r'''/path/to/chromedriver''') [for linux]
 driver = driver.Chrome(r'''\path\to\chromedriver''')[for windows]
 ```
 
-<<<<<<< HEAD
-##### Author: _***TH3-MA3STRO***_(@th3_ma3stro)
-=======
 
-#####Author: _***TH3-MA3STRO***_(@th3_ma3stro)
->>>>>>> 1.0_py
- 
+##### Author: _***TH3-MA3STRO***_(@th3_ma3stro)
+
+
 
