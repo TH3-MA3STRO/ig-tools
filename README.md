@@ -14,14 +14,8 @@
 
 > A Terminal of course xD
 
-#### How to install:
-
-``` 
-git clone https://th3-ma3stro/ig-tools.git
-```
 
 #### __Requirements__
-
 
 
 Before running the script you need these packages installed.
@@ -34,15 +28,17 @@ pyfiglet|
 pyautogui|
 pyinquirer |
 
-Install them by running the following command in terminal
-```
+#### How to :
+
+``` 
+git clone https://github.com/th3-ma3stro/ig-tools.git
+cd ig-tools
 pip install -r requirements.txt
+python setup.py
 ```
+
 Download chromedriver for your os from [here](https://sites.google.com/a/chromium.org/chromedriver/downloads)
 
-#### __How to use__
-
-After installing the packages run `setup.py` and follow the on-screen instructions.
 
 ##### Note:
 `chromedriver` should be in PATH, else mention the location of `chromedriver`
