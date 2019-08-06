@@ -1,5 +1,9 @@
 # ig-tools
-###ig auto-commentor/liker
+
+
+### ig auto-commentor/liker
+
+
  An Instagram toolkit which consists of:
  
  1. Tag-based spammer(Spams posts of #tag)
@@ -11,7 +15,7 @@
 
 > A Terminal of course xD
 
-####How to install:
+#### How to install:
 
 ``` 
 git clone https://th3-ma3stro/ig-tools.git
@@ -48,6 +52,6 @@ driver = driver.Chrome(executable_path=r'''/path/to/chromedriver''') [for linux]
 driver = driver.Chrome(r'''\path\to\chromedriver''')[for windows]
 ```
 
-#####Author: _***TH3-MA3STRO***_(@th3_ma3stro)
+##### Author: _***TH3-MA3STRO***_(@th3_ma3stro)
  
 
