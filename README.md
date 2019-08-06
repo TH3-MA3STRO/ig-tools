@@ -1,14 +1,19 @@
 # ig-tools
 
+<<<<<<< HEAD
 
 ### ig auto-commentor/liker
 
+=======
+###ig auto-commentor/liker
+>>>>>>> 1.0_py
 
  An Instagram toolkit which consists of:
  
  1. Tag-based spammer(Spams posts of #tag)
 
 2. Profile spammer(Spams the posts of a profile)
+
 #### __Prerequisites__
 
 > python 3.7
@@ -20,6 +25,7 @@
 ``` 
 git clone https://th3-ma3stro/ig-tools.git
 ```
+
 #### __Requirements__
 
 
@@ -39,6 +45,7 @@ Install them by running the following command in terminal
 pip install -r requirements.txt
 ```
 Download chromedriver for your os from [here](https://sites.google.com/a/chromium.org/chromedriver/downloads)
+
 #### __How to use__
 
 After installing the packages run `setup.py` and follow the on-screen instructions.
@@ -52,6 +59,11 @@ driver = driver.Chrome(executable_path=r'''/path/to/chromedriver''') [for linux]
 driver = driver.Chrome(r'''\path\to\chromedriver''')[for windows]
 ```
 
+<<<<<<< HEAD
 ##### Author: _***TH3-MA3STRO***_(@th3_ma3stro)
+=======
+
+#####Author: _***TH3-MA3STRO***_(@th3_ma3stro)
+>>>>>>> 1.0_py
  
 
