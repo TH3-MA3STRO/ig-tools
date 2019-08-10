@@ -15,17 +15,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 msg = "Wow cool post thanks for sharing!"
 
 
-
-# def login(u_name, pass_w):
-#     driver = webdriver.Chrome(executable_path=r'''/home/chromedriver''')
-#     action = ActionChains(driver)
-#     wait = WebDriverWait(driver, 40)
-
-
-
-
 def tag_based(u_name, pass_w, w0hash):
-    driver = webdriver.Chrome(executable_path=r'''/home/chromedriver''')
+    driver = webdriver.Chrome(executable_path=r'''/path/to/chromedriver''')
     action = ActionChains(driver)
     wait = WebDriverWait(driver, 40)
     #Logging in
@@ -113,7 +104,7 @@ def tag_based(u_name, pass_w, w0hash):
 
 def profile(u_name, pass_w, tar_uname):
 
-    driver = webdriver.Chrome(executable_path=r'''/home/chromedriver''')
+    driver = webdriver.Chrome(executable_path=r'''/path/to/chromedriver''')
     action = ActionChains(driver)
     wait = WebDriverWait(driver, 40)
 
@@ -138,7 +129,6 @@ def profile(u_name, pass_w, tar_uname):
         c_box = driver.find_element_by_xpath("//textarea[@class='Ypffh']")
 
     except selenium.common.exceptions.StaleElementReferenceException:
-        print('c_box found at line 71')
         wait.until(ec.element_to_be_clickable((By.XPATH, "//textarea[@class='Ypffh']")))
         c_box = driver.find_element_by_xpath("//textarea[@class='Ypffh']")
 
@@ -147,7 +137,7 @@ def profile(u_name, pass_w, tar_uname):
             "//button[@class='dCJp8 afkep _0mzm-']/span[@class='glyphsSpriteHeart__outline__24__grey_9 u-__7']")
         like.click()
     except selenium.common.exceptions.WebDriverException:
-        print("Post Already liked or some other error...")
+        pass
     # next Arrow button
     next_btn = driver.find_element_by_xpath("//a[@class='HBoOv coreSpriteRightPaginationArrow']")
     # for loop so it either spams all the post until it reaches the last post, or the top 20 posts only, but you can
@@ -185,6 +175,4 @@ def profile(u_name, pass_w, tar_uname):
                 "//button[@class='dCJp8 afkep _0mzm-']/span[@class='glyphsSpriteHeart__outline__24__grey_9 u-__7']")
             like.click()
         except selenium.common.exceptions.WebDriverException:
-            print("Post Already liked or some other error...")
-        # time.sleep(4)
-        # driver.__exit__()
+            pass
