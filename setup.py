@@ -22,8 +22,9 @@ if './configs.json' not in ata:
 ''')
         f.close()
 else:
-    with open('configs.json', 'r') as f:
-        data = json.load(f)
+    pass
+with open('configs.json', 'r') as f:
+    data = json.load(f)
 print()
 a = que1()
 b = que2(a=a['tch'])
