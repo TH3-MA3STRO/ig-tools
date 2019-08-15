@@ -1,4 +1,3 @@
-
 import glob
 import json
 import time
@@ -16,7 +15,7 @@ msg = "Wow cool post thanks for sharing!"
 
 
 def tag_based(u_name, pass_w, w0hash):
-    driver = webdriver.Chrome(executable_path=r'''/path/to/chromedriver''')
+    driver = webdriver.Chrome(executable_path=r'''/home/chromedriver''')
     action = ActionChains(driver)
     wait = WebDriverWait(driver, 40)
     #Logging in
@@ -31,8 +30,9 @@ def tag_based(u_name, pass_w, w0hash):
     # Closing the 'Turn on notifications pop-up'
     driver.find_element_by_xpath("//div[@class='mt3GC']/button[@class='aOOlW   HoLwm ']").click()
     num_j = 0
+    print(w0hash)
     if len(w0hash) >= 4:
-        num_j = num_j + 4
+        num_j = 4
     else:
         num_j = num_j + len(w0hash)
 
@@ -49,11 +49,11 @@ def tag_based(u_name, pass_w, w0hash):
 
         try:  # Wait until comment box is clickable
             wait.until(ec.element_to_be_clickable((By.XPATH, "//textarea[@class='Ypffh']")))
-            c_box = driver.find_element_by_xpath("//textarea[@class='Ypffh']")
+            c_box = driver.find_element_by_xpath("//button[@class='dCJp8 afkep _0mzm-']/span[@aria-label='Comment']")
 
         except selenium.common.exceptions.StaleElementReferenceException:
             wait.until(ec.element_to_be_clickable((By.XPATH, "//textarea[@class='Ypffh']")))
-            c_box = driver.find_element_by_xpath("//textarea[@class='Ypffh']")
+            c_box = driver.find_element_by_xpath("//button[@class='dCJp8 afkep _0mzm-']/span[@aria-label='Comment']")
 
         try:
             like = driver.find_element_by_xpath(
@@ -63,9 +63,9 @@ def tag_based(u_name, pass_w, w0hash):
             pass
 
         # Next button
-        next_btn = driver.find_element_by_xpath("//a[@class='HBoOv coreSpriteRightPaginationArrow']")
+        
 
-        for z in range(0, 10):
+        for z in range(0, 3):
             time.sleep(1)
 
             try:
@@ -79,19 +79,20 @@ def tag_based(u_name, pass_w, w0hash):
                 pyautogui.typewrite(['enter'])
 
                 try:  # Goto next post
+                    next_btn = driver.find_element_by_xpath("//a[@class='HBoOv coreSpriteRightPaginationArrow']")
                     next_btn.click()
                 except selenium.common.exceptions.StaleElementReferenceException:
                     pyautogui.alert("Some error occured or you've reached the last post", timeout=7000)
                     pyautogui.alert("Exiting.......", timeout=5000)
 
-                    break
+                    
                 time.sleep(2)
 
             except selenium.common.exceptions.ElementClickInterceptedException:
                 pass
 
             wait.until(ec.element_to_be_clickable((By.XPATH, "//textarea[@class='Ypffh']")))
-            c_box = driver.find_element_by_xpath("//textarea[@class='Ypffh']")
+            c_box = driver.find_element_by_xpath("//button[@class='dCJp8 afkep _0mzm-']/span[@aria-label='Comment']")
 
             try:
                 like = driver.find_element_by_xpath(
@@ -104,7 +105,7 @@ def tag_based(u_name, pass_w, w0hash):
 
 def profile(u_name, pass_w, tar_uname):
 
-    driver = webdriver.Chrome(executable_path=r'''/path/to/chromedriver''')
+    driver = webdriver.Chrome(executable_path=r'''/home/chromedriver''')
     action = ActionChains(driver)
     wait = WebDriverWait(driver, 40)
 
@@ -126,18 +127,19 @@ def profile(u_name, pass_w, tar_uname):
     first_thumb.click()
     try:  # Wait until comment box is clickable
         wait.until(ec.element_to_be_clickable((By.XPATH, "//textarea[@class='Ypffh']")))
-        c_box = driver.find_element_by_xpath("//textarea[@class='Ypffh']")
+        c_box = driver.find_element_by_xpath("//button[@class='dCJp8 afkep _0mzm-']/span[@aria-label='Comment']")
 
     except selenium.common.exceptions.StaleElementReferenceException:
+        print('c_box found at line 71')
         wait.until(ec.element_to_be_clickable((By.XPATH, "//textarea[@class='Ypffh']")))
-        c_box = driver.find_element_by_xpath("//textarea[@class='Ypffh']")
+        c_box = driver.find_element_by_xpath("//button[@class='dCJp8 afkep _0mzm-']/span[@aria-label='Comment']")
 
     try:  # Wait until like button is clickable
         like = driver.find_element_by_xpath(
             "//button[@class='dCJp8 afkep _0mzm-']/span[@class='glyphsSpriteHeart__outline__24__grey_9 u-__7']")
         like.click()
     except selenium.common.exceptions.WebDriverException:
-        pass
+        print("Post Already liked or some other error...")
     # next Arrow button
     next_btn = driver.find_element_by_xpath("//a[@class='HBoOv coreSpriteRightPaginationArrow']")
     # for loop so it either spams all the post until it reaches the last post, or the top 20 posts only, but you can
@@ -168,11 +170,12 @@ def profile(u_name, pass_w, tar_uname):
         except selenium.common.exceptions.ElementClickInterceptedException:
             pass
         wait.until(ec.element_to_be_clickable((By.XPATH, "//textarea[@class='Ypffh']")))
-        c_box = driver.find_element_by_xpath("//textarea[@class='Ypffh']")
+        c_box = driver.find_element_by_xpath("//button[@class='dCJp8 afkep _0mzm-']/span[@aria-label='Comment']")
 
         try:
             like = driver.find_element_by_xpath(
                 "//button[@class='dCJp8 afkep _0mzm-']/span[@class='glyphsSpriteHeart__outline__24__grey_9 u-__7']")
             like.click()
         except selenium.common.exceptions.WebDriverException:
-            pass
+            print("Post Already liked or some other error...")
+        
