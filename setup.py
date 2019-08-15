@@ -35,9 +35,6 @@ pass_w = data['configs']['password']
 if a['tch'].lower() == 'tag-spammer':
     from tag_gettr import tag_get
     w0hashes = tag_get(url=b['p_link'])
-
-if a['tch'].lower() == 'tag-spammer':
-    w0hashes=['tech']
     tag_based(u_name=u_name, pass_w=pass_w,w0hash=w0hashes)
 else:
     profile(u_name=u_name, pass_w=pass_w, tar_uname=b['tar_uname'])
