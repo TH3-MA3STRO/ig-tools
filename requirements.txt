@@ -3,8 +3,5 @@ lxml
 pyautogui
 selenium
 pyinquirer
-promt_toolkit==1.0.14
+# promt_toolkit
 pyfiglet
-glob
-json
-time

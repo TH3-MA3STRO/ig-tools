@@ -1,13 +1,14 @@
 import glob
-import json
 import time
 import pyautogui
-import selenium
 from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
+import requests
+import bs4
+import re
+import json
 
 
 # Spam details
@@ -16,7 +17,6 @@ msg = "Wow cool post thanks for sharing!"
 
 def tag_based(u_name, pass_w, w0hash):
     driver = webdriver.Chrome(executable_path=r'''/home/chromedriver''')
-    action = ActionChains(driver)
     wait = WebDriverWait(driver, 40)
     #Logging in
     driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher")
@@ -104,9 +104,7 @@ def tag_based(u_name, pass_w, w0hash):
 
 
 def profile(u_name, pass_w, tar_uname):
-
     driver = webdriver.Chrome(executable_path=r'''/home/chromedriver''')
-    action = ActionChains(driver)
     wait = WebDriverWait(driver, 40)
 
     driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher")
@@ -178,4 +176,32 @@ def profile(u_name, pass_w, tar_uname):
             like.click()
         except selenium.common.exceptions.WebDriverException:
             print("Post Already liked or some other error...")
-        
+
+
+def _geturl(username):
+    url = 'https://www.instagram.com/{}'.format(username)
+    page = requests.get(url)
+    if page.status_code == 200:
+        soup = bs4.BeautifulSoup(page.text,'lxml')
+        scrpt = soup.find('script',text= re.compile("window._sharedData")).text.replace('window._sharedData = ','')
+        scrpt = json.loads(scrpt.replace(';',''))['entry_data']['ProfilePage'][0]['graphql']['user']
+        print("***ACCOUNT DETAILS***\nFull name: {}\nFollowers: {}\nFollowing: {}\nPrivate: {}".format(scrpt['full_name'],scrpt['edge_followed_by']['count'],scrpt['edge_follow']['count'],scrpt['is_private']))
+        return scrpt['profile_pic_url_hd']
+    else:
+        pass
+
+
+def _getdp(url, fname):
+    img = requests.get(url, stream=True)
+    with open(fname, 'wb') as f:
+        f.write(img.content)
+    print('SUCCESS! IMAGE SAVED IN FILE: '+fname)
+
+
+def execute(username):
+    fname = username+'.jpg'
+    url = _geturl(username)
+    if url != None:
+        dp = _getdp(url,fname)
+    else:
+        print('USER DOES NOT EXISTS')

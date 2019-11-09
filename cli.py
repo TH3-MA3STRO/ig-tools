@@ -45,6 +45,9 @@ def que1():
                 },
                 {
                     'name': 'Profile-Spammer'
+                },
+                {
+                    'name': 'DP-Downloader'
                 }
             ]
         }
@@ -54,9 +57,8 @@ def que1():
 
 
 def que2(a):
-    global questions
     if a.lower() == 'tag-spammer':
-        questions = [
+        question2 = [
             {
                 'type': 'input',
                 'message': "Enter post's link: ",
@@ -65,14 +67,21 @@ def que2(a):
             }
         ]
     elif a.lower() == 'profile-spammer':
-        questions = [
+        question2 = [
             {
                 'type': 'input',
                 'message': "Enter target profile's username: ",
                 'name': 'tar_uname'
-
             }
         ]
-    answers = prompt(questions, style=styler())
+    elif a.lower() == 'dp-downloader':
+        question2 = [
+            {
+                'type': 'input',
+                'message': "Enter profile's username: ",
+                'name': 'username'
+            }
+        ]
+    answers = prompt(question2, style=styler())
     return answers
 
