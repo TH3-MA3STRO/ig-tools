@@ -8,6 +8,7 @@
 
 2. Profile spammer(Spams the posts of a profile)
 
+3. DP Downloader(Downloads DP of the specified username in the beast quality possible)
 #### __Prerequisites__
 
 > python 3.7
@@ -27,6 +28,7 @@ request|
 pyfiglet|
 pyautogui|
 pyinquirer |
+bs4|
 
 #### How to :
 
